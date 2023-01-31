@@ -1,10 +1,13 @@
 package com.example.BusTicketBooking.service;
 
+
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +16,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
+
 
 @Component
 public class JwtService {
@@ -45,10 +49,10 @@ public class JwtService {
         return extractExpiration(token).before(new Date());
     }
 
-    public Boolean validateToken(String token, UserDetails userDetails) throws Exception {
+    public Boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         if(Boolean.TRUE.equals(isTokenExpired(token))){
-            throw new Exception("TOKEN EXPIRED");
+         return false;
         }
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }

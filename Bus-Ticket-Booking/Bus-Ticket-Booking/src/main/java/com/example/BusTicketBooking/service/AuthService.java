@@ -1,11 +1,9 @@
 package com.example.BusTicketBooking.service;
 
-import com.example.BusTicketBooking.constants.RoleEnum;
+
 import com.example.BusTicketBooking.dto.AuthRequest;
 import com.example.BusTicketBooking.dto.AuthResponse;
-import com.example.BusTicketBooking.exception.EmailAlreadyExistException;
 import com.example.BusTicketBooking.exception.ResourceNotFoundException;
-import com.example.BusTicketBooking.model.Role;
 import com.example.BusTicketBooking.model.User;
 import com.example.BusTicketBooking.repository.RoleRepository;
 import com.example.BusTicketBooking.repository.UserRepository;
@@ -19,7 +17,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import com.example.BusTicketBooking.model.Role;
+
+
 
 @Service
 public class AuthService {
@@ -34,17 +34,19 @@ public class AuthService {
     private AuthenticationManager authenticationManager;
     @Autowired
     private PasswordEncoder passwordEncoder;
-    public ResponseEntity<AuthResponse>registerUser(AuthRequest request){
-        if(Boolean.TRUE.equals(userRepository.existsByEmail(request.getEmail()))){
-            logger.error("user already exist");
-            throw new EmailAlreadyExistException("Email already exists");
-        }
+   public ResponseEntity<AuthResponse>registerUser(AuthRequest request){
+//        if(Boolean.TRUE.equals(userRepository.existsByEmail(request.getEmail()))){
+//            logger.error("user already exist");
+//            throw new EmailAlreadyExistsException("Email already exists");
+//        }
         User user = new User();
-        Role role = roleRepository.findByName(RoleEnum.valueOf("ROLE_USER").name()).orElseThrow(()->new UsernameNotFoundException("ROLE_USER EXCEPTION"));
-        user.setName(request.getName());
-        user.setEmail(request.getEmail());
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        Role role = roleRepository.findByName("ROLE_USER").orElseThrow(()->new UsernameNotFoundException("ROLE_USER EXCEPTION"));
         user.setRole(role);
+        user.setName(request.getName());
+
+        user.setEmail(request.getEmail());
+
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
         logger.info("user registered");
         userRepository.save(user);
         return ResponseEntity.ok(new AuthResponse(user.getEmail()+" successfully registered",true));

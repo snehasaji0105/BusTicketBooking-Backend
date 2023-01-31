@@ -1,6 +1,12 @@
 package com.example.BusTicketBooking.config;
 
+
+
 import com.example.BusTicketBooking.filter.JwtFilter;
+import com.example.BusTicketBooking.service.AuthService;
+import com.example.BusTicketBooking.service.CustomUserDetailsService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,6 +27,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableMethodSecurity
 public class SecurityConfig {
+    final Logger logger = LoggerFactory.getLogger(AuthService.class);
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
         return http.csrf().disable()
