@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 @Builder
 @AllArgsConstructor
 public class AuthResponse {
-    final Logger logger = LoggerFactory.getLogger(AuthService.class);
+
     private String message;
     private boolean access;
 }

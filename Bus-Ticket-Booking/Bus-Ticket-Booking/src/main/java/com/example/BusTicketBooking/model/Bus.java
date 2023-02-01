@@ -15,11 +15,11 @@ import lombok.*;
 
 public class Bus {
     @Id
-    private String bus_id;
+    private Integer bus_id;
+    private Integer bus_number;
     private String bus_name;
-    private String bus_number;
-    private String destination;
-    private String source;
-
+    private Integer total_seats;
+    private String route_source;
+    private String route_destination;
 
 }

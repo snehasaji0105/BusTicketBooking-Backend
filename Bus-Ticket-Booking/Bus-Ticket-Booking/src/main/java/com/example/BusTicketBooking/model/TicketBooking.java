@@ -4,8 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "booking",uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"bus_id"})})
+
 @Getter
 @Setter
 @ToString
@@ -16,10 +15,9 @@ import lombok.*;
 
 public class TicketBooking {
     @Id
-    private String ticket_id;
-    private String bus_id;
-    private String destination;
-    private String source;
-    private String no_of_passengers;
-
+    private Integer bus_id;
+    private Integer route_id;
+    private Integer booked_by_user_id;
+    private String booking_date;
+    private Integer num_seats;
 }

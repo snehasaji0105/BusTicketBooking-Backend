@@ -60,7 +60,7 @@ public class TicketBookingService {
 //    }
 
     public ResponseEntity<AuthResponse> deleteTicket(String id) {
-        TicketBooking ticketBooking = ticketBookingRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("BusTicketBooking", id, "not exist"));
+        TicketBooking ticketBooking = ticketBookingRepository.findById(Integer.valueOf(id)).orElseThrow(() -> new ResourceNotFoundException("BusTicketBooking", id, "not exist"));
         logger.info("deleted course");
         ticketBookingRepository.delete(ticketBooking);
         return ResponseEntity.ok(new AuthResponse(String.format("%s is deleted", id), true));

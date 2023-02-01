@@ -3,9 +3,11 @@ package com.example.BusTicketBooking.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "busRoute",uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"bus_id"})})
+        @UniqueConstraint(columnNames = {"journey_date"})})
 @Getter
 @Setter
 @ToString
@@ -16,10 +18,9 @@ import lombok.*;
 
 public class BusRoute {
     @Id
-    private String busRoute_id;
-    private String bus_id;
-    private String source;
-    private String destination;
+   private Integer route_id;
+    private Integer bus_id;
     private String journey_date;
+    private Integer booked_seats;
 
 }
