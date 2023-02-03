@@ -9,9 +9,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class BusRouteService {
     final Logger logger = LoggerFactory.getLogger(BusRouteService.class);
 
@@ -33,7 +34,7 @@ public class BusRouteService {
     }
 
 
-    public ResponseEntity<AuthResponse> updateBusRoute(Long id, BusRoute updatedBusRoute) {
+    public ResponseEntity<AuthResponse> updateBusRoute(Integer id, BusRoute updatedBusRoute) {
         BusRoute oldBusRoute =busRouteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("BusRoute", "id", "not exist"));
         oldBusRoute.setJourneyDate(updatedBusRoute.getJourneyDate());
         oldBusRoute.setBookedSeats(updatedBusRoute.getBookedSeats());
@@ -43,8 +44,8 @@ public class BusRouteService {
         logger.info("updated BusRoute");
         return ResponseEntity.ok(new AuthResponse(String.format("%s is updated", id), true));
     }
-    public ResponseEntity<AuthResponse> deleteBusRoute(Long id) {
-        BusRoute busRoute = busRouteRepository.findById(Long.valueOf(Integer.valueOf(Math.toIntExact(id)))).orElseThrow(() -> new ResourceNotFoundException("BusRoute", "id", "not exist"));
+    public ResponseEntity<AuthResponse> deleteBusRoute(Integer id) {
+        BusRoute busRoute = busRouteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("BusRoute", "id", "not exist"));
         logger.info("deleted BusRoute");
         busRouteRepository.delete(busRoute);
         return ResponseEntity.ok(new AuthResponse(String.format("%s is deleted", id), true));

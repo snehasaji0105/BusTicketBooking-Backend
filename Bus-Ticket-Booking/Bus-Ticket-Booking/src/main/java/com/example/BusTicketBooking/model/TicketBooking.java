@@ -12,7 +12,6 @@ import lombok.*;
 
 @AllArgsConstructor
 
-
 public class TicketBooking {
     @Id
     private Integer busId;

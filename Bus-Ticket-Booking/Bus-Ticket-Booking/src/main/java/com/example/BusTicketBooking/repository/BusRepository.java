@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-public interface BusRepository extends JpaRepository<Bus,Long> {
+public interface BusRepository extends JpaRepository<Bus,Integer> {
     List<Bus> findByBusId(Long busId);
 
 

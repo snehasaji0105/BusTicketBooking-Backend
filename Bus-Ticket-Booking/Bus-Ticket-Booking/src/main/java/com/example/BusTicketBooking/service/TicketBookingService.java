@@ -20,10 +20,10 @@ public class TicketBookingService {
     private TicketBookingRepository ticketBookingRepository;
 
 
-    public ResponseEntity<List<TicketBooking>> getAllTickets() {
-        logger.info("all tickets");
-        return ResponseEntity.ok(ticketBookingRepository.findAll());
-    }
+//    public ResponseEntity<List<TicketBooking>> getAllTickets() {
+//        logger.info("all tickets");
+//        return ResponseEntity.ok(ticketBookingRepository.findAll());
+//    }
 
     public ResponseEntity<List<TicketBooking>> getTicket(String id) {
         logger.info("user ticket");

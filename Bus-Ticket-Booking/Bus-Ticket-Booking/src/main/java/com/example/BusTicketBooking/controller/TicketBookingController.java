@@ -23,10 +23,10 @@ public class TicketBookingController {
     private TicketBookingService ticketBookingService;
 
 
-    @GetMapping("get-tickets")
-    public ResponseEntity<List<TicketBooking>> getAllTickets() {
-        return ticketBookingService.getAllTickets();
-    }
+//    @GetMapping("get-tickets")
+//    public ResponseEntity<List<TicketBooking>> getAllTickets() {
+//        return ticketBookingService.getAllTickets();
+//    }
 
     @GetMapping("get-ticket/{id}")
     public ResponseEntity<List<TicketBooking>> getTicket(@PathVariable Long id) {

@@ -21,5 +21,7 @@ public class Bus {
     private Integer totalSeats;
     private String routeSource;
     private String routeDestination;
-
+    @ManyToOne
+    @JoinColumn(name = "route_id")
+    private BusRoute route;
 }
