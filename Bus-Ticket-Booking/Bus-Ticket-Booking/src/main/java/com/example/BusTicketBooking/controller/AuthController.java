@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
-    final Logger logger = LoggerFactory.getLogger(AuthService.class);
+    final Logger logger = LoggerFactory.getLogger(AuthController.class);
     @Autowired
     private AuthService authService;
 

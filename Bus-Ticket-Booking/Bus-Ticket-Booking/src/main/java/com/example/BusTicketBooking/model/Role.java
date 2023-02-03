@@ -16,7 +16,7 @@ import java.util.List;
 public class Role {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String name;
     @OneToMany(mappedBy = "role")
     @ToString.Exclude

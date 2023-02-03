@@ -5,21 +5,21 @@ import lombok.*;
 
 @Entity
 @Table(name = "bus",uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"bus_id"})})
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
+        @UniqueConstraint(columnNames = {"busId"})})
 
+
+@Data
+@NoArgsConstructor
 @AllArgsConstructor
 
 public class Bus {
     @Id
-    private Integer bus_id;
-    private Integer bus_number;
-    private String bus_name;
-    private Integer total_seats;
-    private String route_source;
-    private String route_destination;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Integer busId;
+    private String busNumber;
+    private String busName;
+    private Integer totalSeats;
+    private String routeSource;
+    private String routeDestination;
 
 }

@@ -27,7 +27,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableMethodSecurity
 public class SecurityConfig {
-    final Logger logger = LoggerFactory.getLogger(AuthService.class);
+    final Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
         return http.csrf().disable()

@@ -7,20 +7,18 @@ import java.util.Date;
 
 @Entity
 @Table(name = "busRoute",uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"journey_date"})})
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
-
+        @UniqueConstraint(columnNames = {"journeyDate"})})
+@Data
+@NoArgsConstructor
 @AllArgsConstructor
 
 
 public class BusRoute {
     @Id
-   private Integer route_id;
-    private Integer bus_id;
-    private String journey_date;
-    private Integer booked_seats;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+   private Integer routeId;
+    private Integer busId;
+    private String journeyDate;
+    private Integer bookedSeats;
 
 }

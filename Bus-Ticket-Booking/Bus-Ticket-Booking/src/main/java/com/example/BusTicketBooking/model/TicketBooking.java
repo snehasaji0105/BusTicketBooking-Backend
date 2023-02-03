@@ -15,9 +15,9 @@ import lombok.*;
 
 public class TicketBooking {
     @Id
-    private Integer bus_id;
-    private Integer route_id;
-    private Integer booked_by_user_id;
-    private String booking_date;
-    private Integer num_seats;
+    private Integer busId;
+    private Integer routeId;
+    private Integer bookedByUserId;
+    private String bookingDate;
+    private Integer numSeats;
 }
